@@ -47,6 +47,18 @@ button {
   cursor: pointer;
 }
 
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height: 30px;
+}
+
 .oi-chevron-top, .oi-chevron-bottom {
   font-size: 20px;
   color: white;
