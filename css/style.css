@@ -1,23 +1,31 @@
 header {
-    background: RGB(20, 20, 20);
-    color: #FAFAFA;
-  }
-  
-  h1 {
-    margin-bottom: 1px;
-  }
-  
-  main {
-    margin-top: 8px;
-  }
-  
-  section {
-    border: 1px solid black;
-  }
-  
-  button {
-    border: 0;
-    background: 0;
-    cursor: pointer;
-  }
-  
+  background: RGB(20, 20, 20);
+  color: #FAFAFA;
+}
+
+h1 {
+  margin-bottom: 1px;
+}
+
+main {
+  margin-top: 8px;
+}
+
+section {
+  border: 1px solid black;
+}
+
+button {
+  border: 0;
+  background: 0;
+  cursor: pointer;
+}
+
+.deletebutton {
+  align-self: flex-end;
+}
+
+.kanban-card {
+  background-color: peachpuff;
+
+}
