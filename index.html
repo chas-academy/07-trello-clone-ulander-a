@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Kanban</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -18,56 +17,75 @@
 
     <header>
         <h1 class="title">看板</h1>
-        <small>(Kanban)</small>
     </header>
 
     <main>
 
-        <div class="d-flex justify-content-around">
+        <aside class="column colors">
+            <small>Color Picker</small>
+            <button id="red" class="color" value="#F44336">
+                <span class="oi"></span>
+            </button>
+            <button id="blue" class="color" value="#2196F3">
+                    <span class="oi oi-check"></span>
+            </button>
+            <button id="green" class="color" value="#4CAF50">
+                <span class="oi"></span>
+            </button>
+            <button id="yellow" class="color" value="#FFEB3B">
+                <span class="oi"></span>
+            </button>
+        </aside>
 
-            <section>
+        <div class="lists">
 
-                <div class="list-header d-flex">
+            <section class="column list">
+                <header>
                     <h3>To do</h3>
-                </div>
+                    <button>
+                        <span class="oi oi-chevron-top"></span>
+                    </button>
+                </header>
 
-                <input type="text">
+                    
+                <input type="text" placeholder="Add new to card">
 
                 <div class="list-body">
-                    <div class="kanban-card d-flex flex-column">
+                    <div class="kanban-card">
+                        
+                    <p>Placeholder text ( Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum, non amet ipsam dignissimos cum tempore ab qui veritatis corporis iure sit ad quia quod vel dolor ex nesciunt, quidem magnam! )</p>
                         <button>
-                            <span class="oi oi-minus" title="minus" aria-hidden="true"></span>
+                            <span class="oi oi-x"></span>
                         </button>
-                        <p>Placeholder text (lorem ipsum)</p>
                     </div>
                 </div>
-
             </section>
 
-            <section>
-                <div class="list-header">
+            <section class="column list">
+                <header>
                     <h3>Doing</h3>
-                </div>
+                </header>
                 <div class="list-body"></div>
             </section>
 
-            <section>
-                <div class="list-header">
+            <section class="column list">
+                <header>
                     <h3>Done</h3>
-                </div>
+                </header>
                 <div class="list-body"></div>
             </section>
 
         </div>
+
     </main>
-    
+
     <!--
       <footer>
         <p>Placeholder</p>
       </footer>
       -->
 
-      <script src="js/kanban.js"></script>
+    <script src="js/kanban.js"></script>
 
 </body>
 
