@@ -4,16 +4,19 @@ $(document).ready(function () {
 
     // Render bottom border for input field
     function colorBorder() {
-        $("input[type=text]").css("border-bottom", "2px solid"+color+"");
+        $("input[type=text]").css("border-bottom", "2px solid" + color + "");
     }
 
     // Define card
     function card(color, text) {
-        return `<div class="kanban-card d-flex flex-column" style="background-color:` + color + `">
-            <p>` + text + `</p>
-            <button>
+        return `<div class="kanban-card mt-1 d-flex flex-column" style="background-color:` + color + `">
+        <div class="d-flex justify-content-between">
+            <small class="text-faded">dd - mm - yy</small>
+            <button class="deletebutton">
                 <span class="oi oi-x"></span>
             </button>
+        </div>
+            <p>` + text + `</p>
         </div>`
     }
 
@@ -29,8 +32,8 @@ $(document).ready(function () {
     });
 
     // Delete card
-    $(document).on("click", ".kanban-card > button", function () {
-        $(this).parent().fadeOut(250, function () {
+    $(document).on("click", ".deletebutton", function () {
+        $(this).closest(".kanban-card").fadeOut(250, function () {
             $(this).remove();
         });
     });
