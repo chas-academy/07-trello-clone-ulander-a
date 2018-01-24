@@ -7,6 +7,9 @@ body {
 body > header {
   background: black;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 h1 {
@@ -57,6 +60,19 @@ footer {
   bottom:0;
   width:100%;
   height: 30px;
+}
+
+.menu > button {
+  margin-right: 5px;
+}
+
+.menu > button span {
+  color: white;
+  font-size: 20px;
+}
+
+.menu > button:hover span {
+  color: lightgray;
 }
 
 .oi-chevron-top, .oi-chevron-bottom {
@@ -134,22 +150,37 @@ footer {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+
+.ui-dialog {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.ui-dialog-titlebar {
+  background:#F44336;
+  color: white;
+  padding: 5px;
+}
+
+.ui-dialog-content {
+  padding: 5px;
+}
+
+
 #red {
   background: #F44336;
-  /* white text */
 }
 
 #blue {
   background: #2196F3;
-  /* black text */
 }
 
 #green {
   background: #4CAF50;
-  /* black text */
 }
 
 #yellow {
   background: #FFEB3B;
-  /* black text */
 }

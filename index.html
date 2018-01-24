@@ -17,9 +17,23 @@
 
     <header>
         <h1 class="title">看板</h1>
+        <div class="menu">
+            <button>
+                <span class="oi oi-trash"></span>
+            </button>
+            <button>
+                <span class="oi oi-data-transfer-download"></span>
+            </button>
+
+        </div>
     </header>
 
     <main>
+
+        <div id="dialog-confirm" title="Clear the board?">
+            <p>
+                <span class="oi oi-warning"></span>This board will be permanently cleared and cannot be recovered. Are you sure?</p>
+        </div>
 
         <aside class="column colors">
             <button id="red" class="color" value="#F44336">
