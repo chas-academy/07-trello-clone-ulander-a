@@ -46,10 +46,21 @@ $(document).ready(function () {
     $(".datepicker").datepicker({
       altField: $(this).find(".deadline"),
       altFormat: "dd - mm - yy",
-    }).on("change", function() {
+    }).on("change", function () {
       $(this).toggle();
     });
   });
 
 });
 
+// $.widget("custom.save", {
+//   _create: function () {
+//     this.element
+//       .addClass("save")
+//       .text(progress);
+//   }
+  
+// });
+
+// let state = $(document);
+// let jsonState = JSON.stringify(state);

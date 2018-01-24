@@ -17,24 +17,31 @@
 
 <body>
 
-    <nav id="tabs" class="d-flex align-items-center">
+    <nav id="tabs" class="d-flex align-items-center justify-content-between">
         <h1 class="title mr-2">看板</h1>
-        <ul class="mr-2">
-            <li>
-                <a href="#menu">
-                    <span class="oi oi-menu"></span>
-                </a>
-            </li>
-        </ul>
-        <div id="menu">
-            <button id="trash">
-                <span class="oi oi-trash"></span>
-            </button>
 
-            <button id="save">
-                <span class="oi oi-data-transfer-download"></span>
-            </button>
-        </div>
+        <span class="d-flex">
+
+            <div id="menu" class="mr-2">
+                <button id="trash">
+                    <span class="oi oi-trash"></span>
+                </button>
+
+                <button id="save">
+                    <span class="oi oi-data-transfer-download"></span>
+                </button>
+            </div>
+
+            <ul class="mr-2">
+                <li>
+                    <a href="#menu">
+                        <span class="oi oi-menu"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </span>
+
     </nav>
 
     <main class="d-flex">
@@ -71,7 +78,7 @@
             <input class="mt-1 add-card" type="text" placeholder="Add new card">
 
             <div id="sortable1" class="list-body">
-                <div class="kanban-card mt-2 d-flex flex-column">
+                <!-- <div class="kanban-card mt-2 d-flex flex-column">
 
                     <div class="d-flex justify-content-end">
                         <input disabled class="deadline mr-auto"></input>
@@ -91,7 +98,7 @@
                         cum tempore ab qui veritatis corporis iure sit ad quia quod vel dolor ex nesciunt, quidem magnam!)
                     </p>
 
-                </div>
+                </div> -->
             </div>
         </section>
 

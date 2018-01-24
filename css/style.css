@@ -63,6 +63,10 @@ footer {
   height: 30px;
 }
 
+a:hover {
+  color: black;
+}
+
 #menu > button span {
   color: lightgray;
   font-size: 20px;
@@ -143,6 +147,7 @@ footer {
 }
 
 .deadline {
+  color: white;
   border: 0;
   background: 0;
 }
