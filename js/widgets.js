@@ -28,8 +28,15 @@ $(document).ready(function () {
     });
   });
 
-  $(".menu > button").on("click", function() {
+  // Open dialog on button-press
+  $("#trash").on("click", function () {
     $("#dialog-confirm").dialog("open");
+  });
+
+  $(function () {
+    $("#tabs").tabs({
+      collapsible: true
+    });
   });
 
 });

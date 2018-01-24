@@ -4,22 +4,31 @@ body {
   font-family: 'Noto', Tahoma, Geneva, Verdana, sans-serif
 }
 
-body > header {
-  background: black;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
-h1 {
-  margin: 0;
+h1 {  
+  color: black;
+  margin-top: 500px;
+  margin-bottom: 0;
   font-weight: 100;
+  font-size: 8em;
 }
 
 h3 {
   margin-bottom: 0;
   font-weight: 400;
+}
+
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  background-color: black;
+}
+
+li > a {
+  color: white;
+  text-decoration: none;
 }
 
 main {
@@ -62,17 +71,21 @@ footer {
   height: 30px;
 }
 
-.menu > button {
+#menu {
+  margin-left: 20px;
+}
+
+#menu > button {
   margin-right: 5px;
 }
 
-.menu > button span {
-  color: white;
+#menu > button span {
+  color: lightgray;
   font-size: 20px;
 }
 
-.menu > button:hover span {
-  color: lightgray;
+#menu > button:hover span {
+  color: black;
 }
 
 .oi-chevron-top, .oi-chevron-bottom {
