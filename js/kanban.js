@@ -36,7 +36,7 @@ $(document).ready(function () {
     });
 
     // Toggle input field
-    $("header").on("click", "button", function () {
+    $(".list > header").on("click", "button", function () {
         $(this).children().toggleClass("oi-chevron-top oi-chevron-bottom");
         $("input[type=text]").slideToggle();
     });

@@ -15,11 +15,33 @@
 
 <body>
 
-    <header>
-        <h1 class="title">看板</h1>
-    </header>
+    
+
+
+
+    <nav id="tabs">
+        <ul>
+            <li>
+                <a href="#menu"><span class="oi oi-menu"></span></a>
+            </li>
+        </ul>
+        <div id="menu">
+            <button id="trash">
+                <span class="oi oi-trash"></span>
+            </button>
+
+            <button id="save">
+                <span class="oi oi-data-transfer-download"></span>
+            </button>
+        </div>
+    </nav>
 
     <main>
+
+        <div id="dialog-confirm" title="Clear the board?">
+            <p>
+                <span class="oi oi-warning"></span>This board will be permanently cleared and cannot be recovered. Are you sure?</p>
+        </div>
 
         <aside class="column colors">
             <button id="red" class="color" value="#F44336">
@@ -79,6 +101,8 @@
 
     </main>
 
+    <h1 class="title">看板</h1>
+    
     <footer>
         <span>By Alve Ulander</span>
     </footer>
