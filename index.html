@@ -68,23 +68,28 @@
             </header>
 
 
-            <input class="my-1" type="text" placeholder="Add new card">
+            <input class="mt-1 add-card" type="text" placeholder="Add new card">
 
             <div id="sortable1" class="list-body">
-                <div class="kanban-card mt-1 d-flex flex-column">
+                <div class="kanban-card mt-2 d-flex flex-column">
 
-                    <div class="d-flex justify-content-between">
-                        <small class="text-faded">dd - mm - yy</small>
+                    <div class="d-flex justify-content-end">
+                        <input disabled class="deadline mr-auto"></input>
+
+                        <button class="deadlinebutton">
+                            <span class="oi oi-calendar"></span>
+                        </button>
 
                         <button class="deletebutton">
                             <span class="oi oi-x"></span>
                         </button>
                     </div>
 
-                    <p>Placeholder text ( Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum, non amet ipsam dignissimos
+                    <input class="datepicker add-deadline" type="text" placeholder="Add deadline">
+
+                    <p>Placeholder text (Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum, non amet ipsam dignissimos
                         cum tempore ab qui veritatis corporis iure sit ad quia quod vel dolor ex nesciunt, quidem magnam!)
                     </p>
-
 
                 </div>
             </div>
@@ -107,7 +112,7 @@
 
     </main>
 
-    <footer>
+    <footer class="d-flex align-items-center">
         <span>By Alve Ulander</span>
     </footer>
 

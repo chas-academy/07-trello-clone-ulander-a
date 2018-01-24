@@ -33,9 +33,21 @@ $(document).ready(function () {
     $("#dialog-confirm").dialog("open");
   });
 
+  // Init tabs
   $(function () {
     $("#tabs").tabs({
-      collapsible: true
+      collapsible: true,
+      active: false
+    });
+  });
+
+  // Init Datepicker
+  $(function () {
+    $(".datepicker").datepicker({
+      altField: $(this).find(".deadline"),
+      altFormat: "dd - mm - yy",
+    }).on("change", function() {
+      $(this).toggle();
     });
   });
 
