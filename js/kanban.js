@@ -39,6 +39,7 @@ $(document).ready(function () {
             }).on("change", function () {
                 $(this).toggle();
             });
+            $(".datepicker").hide();
         }
     });
 
