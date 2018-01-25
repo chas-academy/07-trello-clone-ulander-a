@@ -1,8 +1,9 @@
 $(document).ready(function () {
     let color = "#2196F3";
-
+    
     // Load local storage for kanban-app
     let savedCards = JSON.parse(localStorage.getItem("kanban"));
+    console.log(savedCards);
 
     // Check if there was a saved board state
     if (savedCards === null) {
@@ -10,9 +11,7 @@ $(document).ready(function () {
         var cards = [];
     } else {
         // Populate the lists with their corresponding saved cards
-        var cards = savedCards;
         for (let i = 0; i < savedCards.length; i++) {
-            console.log(savedCards[i]);
             populateBoard(savedCards[i]);
         }
     }
@@ -20,7 +19,6 @@ $(document).ready(function () {
     function populateBoard(savedCard) {
         let color = "#2196F3";
         let list = savedCard.parent;
-        console.log(list);
         let text = savedCard.text;
 
         if (list === "todo") {
@@ -108,8 +106,8 @@ $(document).ready(function () {
     });
 
     $("#save").on("click", function () {
+        cards = [];
         for (let i = 0; i < $(".kanban-card").length; i++) {
-            console.log($(".kanban-card")[i]);
             // cardDeadline = $(".kanban-card")[i].find("input"); broken
             cardParent = $(".kanban-card")[i].closest(".list").id;
             cardColor = $(".kanban-card")[i]["attributes"][1].value;
@@ -123,10 +121,8 @@ $(document).ready(function () {
             cards.push(cardToSave);
         }
 
-        // console.log(cards);
-        // cardsJSON = JSON.stringify(cards);
-        // console.log(cardsJSON);
-
+        
+        localStorage.removeItem("kanban");
         window.localStorage.setItem("kanban", JSON.stringify(cards));
     });
 

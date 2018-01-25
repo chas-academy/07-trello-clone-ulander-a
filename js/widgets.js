@@ -19,6 +19,7 @@ $(document).ready(function () {
       buttons: {
         "Delete all items": function () {
           $(".kanban-card").remove();
+          localStorage.removeItem("kanban");
           $(this).dialog("close");
         },
         Cancel: function () {
