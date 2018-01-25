@@ -31,12 +31,14 @@ $(document).ready(function () {
             let text = $(this).val();
             $(this).val("");
             $(this).next(".list-body").append(
-                card(color, text)
+               card(color, text)
             );
             $(".datepicker").datepicker({
-                altField: $(this).siblings().find(".deadline"),
+                altField: "",
                 altFormat: "dd - mm - yy",
             }).on("change", function () {
+                $(this).datepicker("option", "altField", $(this).siblings().find(".deadline"));
+                console.log($(this).datepicker("option", "altField"));
                 $(this).toggle();
             });
             $(".datepicker").hide();

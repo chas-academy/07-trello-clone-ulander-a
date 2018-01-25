@@ -41,16 +41,6 @@ $(document).ready(function () {
     });
   });
 
-  // Init Datepicker
-  $(function () {
-    $(".datepicker").datepicker({
-      altField: $(this).find(".deadline"),
-      altFormat: "dd - mm - yy",
-    }).on("change", function () {
-      $(this).toggle();
-    });
-  });
-
 });
 
 // $.widget("custom.save", {
