@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     // Check if there was a saved board state
     if (savedCards === null) {
-        // Create an empty array for the save function to use
+        // Create an empty array for that the save function can use
         var cards = [];
     } else {
         // Populate the lists with their corresponding saved cards
@@ -15,7 +15,8 @@ $(document).ready(function () {
     }
 
     function populateBoard(savedCard) {
-        let color = "#2196F3";
+        // console.log(savedCard);
+        let color = savedCard.color.substring(17, 35);
         let list = savedCard.parent;
         let text = savedCard.text;
 
@@ -94,12 +95,14 @@ $(document).ready(function () {
             cardParent = $(".kanban-card")[i].closest(".list").id;
             cardColor = $(".kanban-card")[i]["attributes"][1].value;
             cardText = $(".kanban-card")[i]["innerText"];
+
             let cardToSave = {
                 parent: cardParent,
                 // deadline: cardDeadline,
                 color: cardColor,
                 text: cardText
             }
+
             cards.push(cardToSave);
         }
         
