@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    var color = "#2196F3";
 
     // Load local storage for kanban-app
     let savedCards = JSON.parse(localStorage.getItem("kanban"));

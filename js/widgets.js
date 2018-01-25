@@ -46,8 +46,10 @@ $(document).ready(function () {
 
   $.widget("kanban.colorpicker", {
     options: {
+      default: 0,
       element: ".box",
       checkmark: "X",
+      selector: "background-color",
       colors: {
         red: "red",
         blue: "blue",
@@ -57,27 +59,49 @@ $(document).ready(function () {
     },
     _create: function () {
 
-      // Add color buttons
-      this.buttons = $(
-        `<button class="color" value="` + this.options.colors.red + `" style="background-color:` + this.options.colors.red + `"></button>
-      <button class="color" value="`+ this.options.colors.blue + `" style="background-color:` + this.options.colors.blue + `"></button>
-      <button class="color" value="`+ this.options.colors.green + `" style="background-color:` + this.options.colors.green + `"></button>
-      <button class="color" value="`+ this.options.colors.yellow + `" style="background-color:` + this.options.colors.yellow + `"></button>`
-      ).appendTo(this.element);
+      var colorsArr = $.map(this.options.colors, function(value, index) {
+        return [value];
+      });
+  
+      var chkmrk = this.options.checkmark;
 
-      var checkmark = this.options.checkmark;
+      var defaultVal = this.options.default;
+
+      var buttonsArr = [];
+
       var element = this.options.element;
+      var defaultColor = colorsArr[this.options.default];
+      var selector = this.options.selector;
 
+      $(element).css(selector, defaultColor);
+
+      for (let i = 0; i < 4; i++) {
+        if (i == defaultVal) {
+          btn = `<button class="color" value="`+colorsArr[i]+`" style="background-color:`+colorsArr[i]+`">`+chkmrk+`</button>`;
+        } else {
+          btn = `<button class="color" value="`+colorsArr[i]+`" style="background-color:`+colorsArr[i]+`"></button>`;
+        }
+        buttonsArr.push(btn);
+      }
+
+      var b0 = buttonsArr[0];
+      var b1 = buttonsArr[1];
+      var b2 = buttonsArr[2];
+      var b3 = buttonsArr[3];
+
+      // Add color buttons
+      this.add = $(b0+b1+b2+b3).appendTo(this.element);
+      
       $(".color").on("click", function () {
         maincolor = $(this).val();
-        $(element).css("border-color", $(this).val());
+        $(element).css(selector, $(this).val());
         $(".color").removeClass("checked");
         $(".color").text("");
         $(this).addClass("checked");
-        $(this).append(checkmark);
+        $(this).append(chkmrk);
       });
     },
-    _setOptions(buttons, element, checkmark, colors) {
+    _setOptions(element, checkmark, colors) {
       this._super(key, value);
     },
     _destroy: function () { },
@@ -85,8 +109,10 @@ $(document).ready(function () {
   });
 
   $(".colors").colorpicker({
+    default: 1,
     element: ".add-card",
     checkmark: "<span class='oi oi-check'></span>",
+    selector: "border-color",
     colors: {
       red: "#F44336",
       blue: "#2196F3",
