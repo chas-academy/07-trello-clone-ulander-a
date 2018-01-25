@@ -33,11 +33,24 @@ $(document).ready(function () {
     $("#dialog-confirm").dialog("open");
   });
 
+  // Init tabs
   $(function () {
     $("#tabs").tabs({
-      collapsible: true
+      collapsible: true,
+      active: false
     });
   });
 
 });
 
+// $.widget("custom.save", {
+//   _create: function () {
+//     this.element
+//       .addClass("save")
+//       .text(progress);
+//   }
+  
+// });
+
+// let state = $(document);
+// let jsonState = JSON.stringify(state);
