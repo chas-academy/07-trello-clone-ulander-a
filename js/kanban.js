@@ -1,9 +1,8 @@
 $(document).ready(function () {
-    let color = "#2196F3";
-    
+    var color = "#2196F3";
+
     // Load local storage for kanban-app
     let savedCards = JSON.parse(localStorage.getItem("kanban"));
-    console.log(savedCards);
 
     // Check if there was a saved board state
     if (savedCards === null) {
@@ -30,14 +29,6 @@ $(document).ready(function () {
         }
     }
 
-    // Set the input fields border
-    colorBorder();
-
-    // Render bottom border for input field
-    function colorBorder() {
-        $("input.add-card").css("border-bottom", "2px solid" + color + "");
-    }
-
     // Define card
     function card(color, text) {
         return `<div class="kanban-card mt-2 d-flex flex-column" style="background-color:` + color + `">
@@ -60,6 +51,7 @@ $(document).ready(function () {
     $("input.add-card").keypress(function (event) {
         if (event.which === 13) {
             let text = $(this).val();
+            let color = $(".checked").css("background-color");
             $(this).val("");
             $(this).next(".list-body").append(
                 card(color, text)
@@ -90,15 +82,6 @@ $(document).ready(function () {
         $("input.add-card").slideToggle();
     });
 
-
-    // Toggle chosen color
-    $(".color").on("click", function () {
-        color = $(this).val();
-        $(".oi-check").removeClass("oi-check");
-        colorBorder();
-        $(this).children().addClass("oi-check");
-    });
-
     // Toggle deadline-input
     $(".datepicker").hide();
     $(document).on("click", ".deadlinebutton", function () {
@@ -120,7 +103,6 @@ $(document).ready(function () {
             }
             cards.push(cardToSave);
         }
-
         
         localStorage.removeItem("kanban");
         window.localStorage.setItem("kanban", JSON.stringify(cards));

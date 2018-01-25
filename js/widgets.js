@@ -42,4 +42,58 @@ $(document).ready(function () {
     });
   });
 
+  // Init custom colorpicker widget
+
+  $.widget("kanban.colorpicker", {
+    options: {
+      element: ".box",
+      checkmark: "X",
+      colors: {
+        red: "red",
+        blue: "blue",
+        green: "green",
+        yellow: "yellow"
+      },
+    },
+    _create: function () {
+
+      // Add color buttons
+      this.buttons = $(
+        `<button class="color" value="` + this.options.colors.red + `" style="background-color:` + this.options.colors.red + `"></button>
+      <button class="color" value="`+ this.options.colors.blue + `" style="background-color:` + this.options.colors.blue + `"></button>
+      <button class="color" value="`+ this.options.colors.green + `" style="background-color:` + this.options.colors.green + `"></button>
+      <button class="color" value="`+ this.options.colors.yellow + `" style="background-color:` + this.options.colors.yellow + `"></button>`
+      ).appendTo(this.element);
+
+      var checkmark = this.options.checkmark;
+      var element = this.options.element;
+
+      $(".color").on("click", function () {
+        maincolor = $(this).val();
+        $(element).css("border-color", $(this).val());
+        $(".color").removeClass("checked");
+        $(".color").text("");
+        $(this).addClass("checked");
+        $(this).append(checkmark);
+      });
+    },
+    _setOptions(buttons, element, checkmark, colors) {
+      this._super(key, value);
+    },
+    _destroy: function () { },
+
+  });
+
+  $(".colors").colorpicker({
+    element: ".add-card",
+    checkmark: "<span class='oi oi-check'></span>",
+    colors: {
+      red: "#F44336",
+      blue: "#2196F3",
+      green: "#4CAF50",
+      yellow: "#FFEB3B"
+    }
+  });
+
 });
+
