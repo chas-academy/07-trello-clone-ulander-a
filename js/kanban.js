@@ -2,17 +2,33 @@ $(document).ready(function () {
     let color = "#2196F3";
 
     // Load local storage for kanban-app
-    let boardState = JSON.parse(localStorage.getItem("kanban"));
+    let savedCards = JSON.parse(localStorage.getItem("kanban"));
 
     // Check if there was a saved board state
-    if (boardState === null) {
+    if (savedCards === null) {
         // Create an empty array for the save function to use
         var cards = [];
     } else {
         // Populate the lists with their corresponding saved cards
-        for (let i = 0; i < boardState.length; i++) {
-            console.log(boardState[i]);
-            
+        var cards = savedCards;
+        for (let i = 0; i < savedCards.length; i++) {
+            console.log(savedCards[i]);
+            populateBoard(savedCards[i]);
+        }
+    }
+
+    function populateBoard(savedCard) {
+        let color = "#2196F3";
+        let list = savedCard.parent;
+        console.log(list);
+        let text = savedCard.text;
+
+        if (list === "todo") {
+            $("#todo").find(".list-body").append(card(color, text));
+        } else if (list === "doing") {
+            $("#doing").find(".list-body").append(card(color, text));
+        } else if (list === "done") {
+            $("#done").find(".list-body").append(card(color, text));
         }
     }
 
