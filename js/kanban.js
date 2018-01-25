@@ -1,5 +1,36 @@
 $(document).ready(function () {
     let color = "#2196F3";
+    
+    // Load local storage for kanban-app
+    let savedCards = JSON.parse(localStorage.getItem("kanban"));
+    console.log(savedCards);
+
+    // Check if there was a saved board state
+    if (savedCards === null) {
+        // Create an empty array for the save function to use
+        var cards = [];
+    } else {
+        // Populate the lists with their corresponding saved cards
+        for (let i = 0; i < savedCards.length; i++) {
+            populateBoard(savedCards[i]);
+        }
+    }
+
+    function populateBoard(savedCard) {
+        let color = "#2196F3";
+        let list = savedCard.parent;
+        let text = savedCard.text;
+
+        if (list === "todo") {
+            $("#todo").find(".list-body").append(card(color, text));
+        } else if (list === "doing") {
+            $("#doing").find(".list-body").append(card(color, text));
+        } else if (list === "done") {
+            $("#done").find(".list-body").append(card(color, text));
+        }
+    }
+
+    // Set the input fields border
     colorBorder();
 
     // Render bottom border for input field
@@ -31,14 +62,14 @@ $(document).ready(function () {
             let text = $(this).val();
             $(this).val("");
             $(this).next(".list-body").append(
-               card(color, text)
+                card(color, text)
             );
+            // Add datepicker
             $(".datepicker").datepicker({
                 altField: "",
                 altFormat: "dd - mm - yy",
             }).on("change", function () {
                 $(this).datepicker("option", "altField", $(this).siblings().find(".deadline"));
-                console.log($(this).datepicker("option", "altField"));
                 $(this).toggle();
             });
             $(".datepicker").hide();
@@ -74,5 +105,25 @@ $(document).ready(function () {
         $(this).parent().next(".datepicker").slideToggle();
     });
 
-});
+    $("#save").on("click", function () {
+        cards = [];
+        for (let i = 0; i < $(".kanban-card").length; i++) {
+            // cardDeadline = $(".kanban-card")[i].find("input"); broken
+            cardParent = $(".kanban-card")[i].closest(".list").id;
+            cardColor = $(".kanban-card")[i]["attributes"][1].value;
+            cardText = $(".kanban-card")[i]["innerText"];
+            let cardToSave = {
+                parent: cardParent,
+                // deadline: cardDeadline,
+                color: cardColor,
+                text: cardText
+            }
+            cards.push(cardToSave);
+        }
 
+        
+        localStorage.removeItem("kanban");
+        window.localStorage.setItem("kanban", JSON.stringify(cards));
+    });
+
+});

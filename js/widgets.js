@@ -19,6 +19,7 @@ $(document).ready(function () {
       buttons: {
         "Delete all items": function () {
           $(".kanban-card").remove();
+          localStorage.removeItem("kanban");
           $(this).dialog("close");
         },
         Cancel: function () {
@@ -42,15 +43,3 @@ $(document).ready(function () {
   });
 
 });
-
-// $.widget("custom.save", {
-//   _create: function () {
-//     this.element
-//       .addClass("save")
-//       .text(progress);
-//   }
-  
-// });
-
-// let state = $(document);
-// let jsonState = JSON.stringify(state);
