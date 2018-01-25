@@ -42,15 +42,3 @@ $(document).ready(function () {
   });
 
 });
-
-// $.widget("custom.save", {
-//   _create: function () {
-//     this.element
-//       .addClass("save")
-//       .text(progress);
-//   }
-  
-// });
-
-// let state = $(document);
-// let jsonState = JSON.stringify(state);
