@@ -11,29 +11,30 @@ $(document).ready(function () {
         // Populate the lists with their corresponding saved cards
         for (let i = 0; i < savedCards.length; i++) {
             populateBoard(savedCards[i]);
+            addDP();
         }
     }
 
     function populateBoard(savedCard) {
-        // console.log(savedCard);
+        let deadline = savedCard.deadline;
         let color = savedCard.color.substring(17, 35);
         let list = savedCard.parent;
         let text = savedCard.text;
 
         if (list === "todo") {
-            $("#todo").find(".list-body").append(card(color, text));
+            $("#todo").find(".list-body").append(card(color, text, deadline));
         } else if (list === "doing") {
-            $("#doing").find(".list-body").append(card(color, text));
+            $("#doing").find(".list-body").append(card(color, text, deadline));
         } else if (list === "done") {
-            $("#done").find(".list-body").append(card(color, text));
+            $("#done").find(".list-body").append(card(color, text, deadline));
         }
     }
 
     // Define card
-    function card(color, text) {
+    function card(color, text, deadline = '') {
         return `<div class="kanban-card mt-2 d-flex flex-column" style="background-color:` + color + `">
         <div class="d-flex">
-            <input disabled class="deadline mr-auto"></input>
+            <input disabled value="`+ deadline +`" class="deadline mr-auto"></input>
             <button class="deadlinebutton">
                 <span class="oi oi-calendar"></span>
             </button>
@@ -56,17 +57,22 @@ $(document).ready(function () {
             $(this).next(".list-body").append(
                 card(color, text)
             );
-            // Add datepicker
-            $(".datepicker").datepicker({
-                altField: "",
-                altFormat: "dd - mm - yy",
-            }).on("change", function () {
-                $(this).datepicker("option", "altField", $(this).siblings().find(".deadline"));
-                $(this).toggle();
-            });
-            $(".datepicker").hide();
+            addDP();
         }
     });
+
+    // Add datepickers
+    function addDP() {
+        $(".datepicker").datepicker({
+            altField: "",
+            altFormat: "dd - mm - yy",
+        }).on("change", function () {
+            $(this).datepicker("option", "altField", $(this).siblings().find(".deadline"));
+            $(this).toggle();
+        });
+        $(".datepicker").hide();
+    }
+
 
 
     // Delete card
@@ -91,21 +97,21 @@ $(document).ready(function () {
     $("#save").on("click", function () {
         cards = [];
         for (let i = 0; i < $(".kanban-card").length; i++) {
-            // cardDeadline = $(".kanban-card")[i].find("input"); broken
-            cardParent = $(".kanban-card")[i].closest(".list").id;
-            cardColor = $(".kanban-card")[i]["attributes"][1].value;
-            cardText = $(".kanban-card")[i]["innerText"];
+            let cardDeadline = $(".deadline")[i].value;
+            let cardParent = $(".kanban-card")[i].closest(".list").id;
+            let cardColor = $(".kanban-card")[i]["attributes"][1].value;
+            let cardText = $(".kanban-card")[i]["innerText"];
 
             let cardToSave = {
                 parent: cardParent,
-                // deadline: cardDeadline,
+                deadline: cardDeadline,
                 color: cardColor,
                 text: cardText
             }
 
             cards.push(cardToSave);
         }
-        
+
         localStorage.removeItem("kanban");
         window.localStorage.setItem("kanban", JSON.stringify(cards));
     });
